@@ -1,8 +1,7 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Provider } from "react-redux"
+import store from "./assets/store"
 import Header from "./components/Header"
 import Home from "./pages/Home"
-import VideoContainer from "./components/VideoContainer"
-import WatchPage from "./pages/WatchPage"
 
 
 /**
@@ -17,30 +16,15 @@ import WatchPage from "./pages/WatchPage"
  * 
  */
 
-const router = createBrowserRouter([
-  {
-    path:'/',
-    element:<App/>,
-    children:[
-      {
-        path:'/',
-        element:<VideoContainer />
-      },
-      {
-        path:'/watch?v=',
-        element:<WatchPage/>
-      }
-    ]
-  }
-])
+
 
 function App() {
 
   return (
-    <RouterProvider router={router}>
+    <Provider store={store}>
       <Header/>
       <Home />
-    </RouterProvider>
+    </Provider>
   )
 }
 

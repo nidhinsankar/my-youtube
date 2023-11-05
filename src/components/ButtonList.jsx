@@ -12,7 +12,7 @@ const Button = ({name}) => {
 const ButtonList = () => {
 
     return (
-        <div className="flex">
+        <div className="flex overflow-x-auto">
             {lists.map(name => (
                 <Button key={name} name={name} />
             ))}

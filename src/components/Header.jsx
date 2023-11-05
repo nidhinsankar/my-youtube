@@ -14,7 +14,7 @@ const Header = () => {
         <div className="grid grid-flow-col py-3 px-2 shadow-lg items-center">
             <div className="flex col-span-1 items-center">
                 <img
-                    className="h-8 mx-3"
+                    className="h-8 mx-3 cursor-pointer"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"
                     alt="menu"
                     onClick={()=>handleMenuToggle()}
