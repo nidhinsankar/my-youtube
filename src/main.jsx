@@ -1,35 +1,32 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import React from 'react'
-import VideoContainer from './components/VideoContainer'
-import WatchPage from './pages/WatchPage'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import { Provider } from 'react-redux'
-import store from './assets/store.js'
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import React from "react";
+import VideoContainer from "./components/VideoContainer";
+import WatchPage from "./pages/WatchPage";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>,
-    children:[
+    path: "/",
+    element: <App />,
+    children: [
       {
-        path:'/',
-        element:<VideoContainer />
+        path: "/",
+        element: <VideoContainer />,
       },
       {
-        path:'/watch',
-        element:<WatchPage/>
-      }
-    ]
-  }
-])
+        path: "/watch",
+        element: <WatchPage />,
+      },
+    ],
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router}>
-        <App />
+      <App />
     </RouterProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

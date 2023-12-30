@@ -1,15 +1,14 @@
-import ButtonList from "./ButtonList"
-import VideoCard from "./VideoCard"
+import { useGetVideosQuery } from "../store/youtubeApiSlice";
+import ButtonList from "./ButtonList";
+import VideoCard from "./VideoCard";
 
+const VideoContainer = () => {
+  return (
+    <div className="m-4">
+      <ButtonList />
+      <VideoCard />
+    </div>
+  );
+};
 
-const VideoContainer = ()=>{
-
-    return (
-        <div className="m-4">
-            <ButtonList />
-            <VideoCard/>
-        </div>
-    )
-}
-
-export default VideoContainer
+export default VideoContainer;

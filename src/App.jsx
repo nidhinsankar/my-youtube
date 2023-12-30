@@ -1,31 +1,27 @@
-import { Provider } from "react-redux"
-import store from "./assets/store"
-import Header from "./components/Header"
-import Home from "./pages/Home"
-
+import { Provider } from "react-redux";
+import store from "./store/store";
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 /**
- * 
+ *
  * HEADER
  * BODY
  *  - SIDEBAR
  *  - MAIN-CONTAINER
  *     - BUTTONLIST
  *     - VIDEOCARD CONTAINER
- *     - LIST OF VIDEOCARD 
- * 
+ *     - LIST OF VIDEOCARD
+ *
  */
 
-
-
 function App() {
-
   return (
     <Provider store={store}>
-      <Header/>
+      <Header />
       <Home />
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;
