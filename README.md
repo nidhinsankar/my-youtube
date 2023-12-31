@@ -16,4 +16,13 @@ work done
 - useSearchParams
 - embed the video in watch page
 - homework URLSearchParams
-- debouncing - increase performance, debounce with 200ms ==> if key stroke
+- implemented debouncing - increase performance, debounce with 200ms ==> if key stroke
+- implemented caching using redux toolkit
+
+# concepts learned
+
+- debouncing using react
+- object.assign(target,source1,source2)
+- caching using redux toolkit
+- two level nested comments
+- end level nested comments like in reddit

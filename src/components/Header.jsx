@@ -1,10 +1,15 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../store/appSlice";
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { YOUTUBE_SEARCH_SUGGESTION } from "../utils/constants";
+import searchIcon from "../assets/search-icon.svg";
+import { addCacheResults } from "../store/searchSLice";
 
 const Header = () => {
-  const search = useRef(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const cacheResult = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
   const handleMenuToggle = () => {
@@ -12,10 +17,29 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(search.current?.value);
-  }, [search]);
+    const timer = setTimeout(() => {
+      if (cacheResult[searchQuery]) {
+        console.log("inside timer");
+        setSuggestions(cacheResult[searchQuery]);
+      } else {
+        searchSuggestion();
+      }
+    }, 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
 
-  const onSearch = () => {};
+  const onBlurChange = () => {
+    setSuggestions([]);
+  };
+
+  const searchSuggestion = async () => {
+    const res = await fetch(YOUTUBE_SEARCH_SUGGESTION + searchQuery);
+    const data = await res.json();
+    setSuggestions(data[1]);
+    dispatch(addCacheResults({ [searchQuery]: data[1] }));
+  };
 
   return (
     <div className="grid grid-flow-col py-3 px-2 shadow-lg items-center">
@@ -34,20 +58,41 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className="col-span-10 text-center">
+      <div className="col-span-10 mx-20">
         <input
-          ref={search}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className="border border-gray-300 w-1/3 px-3 py-2 rounded-l-full"
           type="text"
           name="search"
           id="search-input"
+          onBlur={onBlurChange}
         />
         <button
-          className="px-3 py-2 border border-gray-300 bg-gray-300 rounded-r-full"
-          onClick={onSearch}
+          className=" border border-gray-300 bg-gray-300 rounded-r-full py-2 px-2"
+          // onClick={onSearch}
         >
           search
         </button>
+        <div
+          className={
+            suggestions.length === 0
+              ? "hidden"
+              : "absolute bg-white w-[27rem] shadow-lg rounded-lg mt-1 p-3 border border-gray-300"
+          }
+        >
+          <ul>
+            {suggestions?.map((suggestionName) => (
+              <li
+                className="flex px-2 py-1 hover:bg-gray-100"
+                key={suggestionName}
+              >
+                <img src={searchIcon} alt="search-icon" className="w-4 mr-3" />
+                {suggestionName}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className="col-span-1">
         <img
