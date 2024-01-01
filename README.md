@@ -23,6 +23,8 @@ work done
 
 - debouncing using react
 - object.assign(target,source1,source2)
-- caching using redux toolkit
+
 - two level nested comments
-- end level nested comments like in reddit
+- end level nested comments like in reddit- caching using redux toolkit
+
+# not done
