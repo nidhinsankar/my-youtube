@@ -26,5 +26,13 @@ work done
 
 - two level nested comments
 - end level nested comments like in reddit- caching using redux toolkit
+- implementing api polling in react app
 
 # not done
+
+### challenges in live chat
+
+- UI layer - displaying the data
+- Data layer - getting the data
+  - data live (web sockets) - bidirectional data flow
+  - Long polling or api polling uirequest the server and returns the data at certain interval - unidirectional data flow

@@ -210,7 +210,7 @@ const CommentList = ({ comments }) => {
 
 const CommentContainer = () => {
   return (
-    <div>
+    <div className="w-[70%]">
       <CommentList comments={commentsList} />
     </div>
   );
