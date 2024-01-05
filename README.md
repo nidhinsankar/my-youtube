@@ -18,6 +18,8 @@ work done
 - homework URLSearchParams
 - implemented debouncing - increase performance, debounce with 200ms ==> if key stroke
 - implemented caching using redux toolkit
+- implemented polling in react app
+- created ui for live chat components
 
 # concepts learned
 
